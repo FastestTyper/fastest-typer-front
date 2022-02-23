@@ -1,0 +1,13 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+h1 {
+  margin: 10px;
+}
+.form > div {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
