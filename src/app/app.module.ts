@@ -9,13 +9,15 @@ import { RegisterComponent } from './register/register.component';
 import {AppRoutingModule} from "./app-routing-module";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { RankingComponent } from './ranking/ranking.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    RankingComponent
   ],
   imports: [
     AppRoutingModule,

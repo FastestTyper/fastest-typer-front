@@ -1,0 +1,25 @@
+.table {
+  width: 70%;
+
+
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  gap: 10px 30px;
+  align-items: center;
+}
+
+.prin {
+  display: flex;
+  height: 900px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.btn-primary {
+
+}
