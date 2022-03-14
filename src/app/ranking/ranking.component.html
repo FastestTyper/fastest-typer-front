@@ -1,0 +1,21 @@
+<div class="table">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">User</th>
+      <th scope="col">Points</th>
+    </tr>
+    </thead>
+    <tbody>
+
+
+    <tr *ngFor=" let data of ELEMENT_DATA; let i = index">
+      <th scope="row">{{ i +1 }}</th>
+      <td>{{data.name}}</td>
+      <td>{{data.points}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
