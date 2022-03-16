@@ -10,6 +10,8 @@ import {AppRoutingModule} from "./app-routing-module";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { RankingComponent } from './ranking/ranking.component';
+import { NavBComponent } from './nav-b/nav-b.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { RankingComponent } from './ranking/ranking.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    RankingComponent
+    RankingComponent,
+    NavBComponent,
+    MainPageComponent
   ],
   imports: [
     AppRoutingModule,

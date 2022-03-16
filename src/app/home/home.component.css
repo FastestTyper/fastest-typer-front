@@ -18,8 +18,16 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+  background-color: white;
 }
 
-.btn-primary {
+.btn {
+  background-color: #6b8ce6;
+  border-color: #6b8ce6;
+  height:100px;
+  width:200px;
+  margin-bottom: 100px;
 
 }
+
+

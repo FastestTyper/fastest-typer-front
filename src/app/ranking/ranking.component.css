@@ -1,0 +1,9 @@
+.table-hover {
+  background-color: #CFD7EF;
+  color: black;
+}
+
+.table-hover thead{
+  background-color: #6b8ce6;
+}
+
