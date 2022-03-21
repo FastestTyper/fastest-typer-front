@@ -1,0 +1,16 @@
+.prin {
+  display: flex;
+  height: 700px;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: white;
+  flex-wrap: wrap;
+}
+.btn {
+  background-color: #6b8ce6;
+  border-color: #6b8ce6;
+  height:200px;
+  width:400px;
+  margin-bottom: 100px;
+
+}

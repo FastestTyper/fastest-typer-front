@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
   onRegister(): void {
     this.loginService.register(this.email, this.alias,this.password)
       .subscribe({
-        next: value => {this.showRegister=true; console.log("ok")},
+        next: value => {this.showRegister=true; this.showError=false; console.log("ok")},
         error: err => {this.showError=true; console.log(err)},
       });
   }

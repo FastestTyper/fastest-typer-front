@@ -12,6 +12,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { RankingComponent } from './ranking/ranking.component';
 import { NavBComponent } from './nav-b/nav-b.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { PracticeComponent } from './practice/practice.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MainPageComponent } from './main-page/main-page.component';
     RegisterComponent,
     RankingComponent,
     NavBComponent,
-    MainPageComponent
+    MainPageComponent,
+    PracticeComponent
   ],
   imports: [
     AppRoutingModule,
