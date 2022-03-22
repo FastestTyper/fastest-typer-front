@@ -16,3 +16,12 @@
 .incomplete {
   background-color: #D7D8D6;
 }
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-video {
+  margin-top: 80px;
+}

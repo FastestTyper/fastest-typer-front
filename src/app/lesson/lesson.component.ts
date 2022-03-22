@@ -119,13 +119,13 @@ export class LessonComponent implements OnInit {
     for(let i = 0; i < textArr.length; i++) {
       if(i < inputArr.length){
         if(inputArr[i] == textArr[i]){
-          html += "<spam style='color: #1A5702; background-color: #BEF4B3'>" + textArr[i] + "</spam>"
+          html += "<spam style='color: #1A5702; background-color: #BEF4B3; font-size: 20px;'>" + textArr[i] + "</spam>"
         } else {
-          html += "<spam style='color: #812006; background-color: #F4C1B3'>" + textArr[i] + "</spam>"
+          html += "<spam style='color: #812006; background-color: #F4C1B3; font-size: 20px;'>" + textArr[i] + "</spam>"
           allCorrect = false;
         }
       }else {
-          html += "<spam style='color: black;'>" + textArr[i] + "</spam>"
+          html += "<spam style='color: black; font-size: 20px;'>" + textArr[i] + "</spam>"
         allCorrect = false;
       }
     }

@@ -1,0 +1,10 @@
+<div class="lesson">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{lesson.title}}</h5>
+      <video width="800" height="563" controls autoplay>
+        <source *ngIf="url != undefined" [src]="url" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</div>

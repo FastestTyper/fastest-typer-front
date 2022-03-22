@@ -2,8 +2,11 @@
   <div *ngFor="let lesson of lessons" class="card">
     <div [ngClass]="lesson.completed ? 'completed' : 'incomplete'" class="card-body">
       <h5 class="card-title">{{lesson.lesson.title}}</h5>
-      <p class="card-text">{{lesson.lesson.text.substring(0, 100) + "..."}}</p>
-      <button class="btn btn-primary" (click)="onPlay(lesson.lesson.id)">Jugar</button>
+      <p *ngIf="lesson.lesson.type == 'TEXT'" class="card-text">{{lesson.lesson.text.substring(0, 100) + "..."}}</p>
+      <div class="buttons">
+        <button *ngIf="lesson.lesson.type == 'TEXT'" class="btn btn-primary" (click)="onPlay(lesson.lesson.id, lesson.lesson.type)">Jugar</button>
+        <button *ngIf="lesson.lesson.type == 'VIDEO'" class="btn btn-primary btn-video" (click)="onPlay(lesson.lesson.id, lesson.lesson.type)">Ver</button>
+      </div>
     </div>
   </div>
 </div>

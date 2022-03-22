@@ -17,6 +17,7 @@ import {TokenInterceptor} from "./interceptors/token.interceptor";
 import {APP_BASE_HREF} from "@angular/common";
 import {environment} from "../environments/environment";
 import { LessonComponent } from './lesson/lesson.component';
+import { LessonVideoComponent } from './lesson-video/lesson-video.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LessonComponent } from './lesson/lesson.component';
     NavBComponent,
     MainPageComponent,
     PracticeComponent,
-    LessonComponent
+    LessonComponent,
+    LessonVideoComponent
   ],
   imports: [
     AppRoutingModule,

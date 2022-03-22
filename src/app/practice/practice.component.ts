@@ -22,7 +22,12 @@ export class PracticeComponent implements OnInit {
     })
   }
 
-  onPlay(id: string) {
-    this.router.navigateByUrl('/lesson/' + id).then();
+  onPlay(id: string, type: string) {
+    if(type == "TEXT") {
+      this.router.navigateByUrl('/lesson/' + id).then();
+    }
+    else {
+      this.router.navigateByUrl('/lesson-video/' + id).then();
+    }
   }
 }

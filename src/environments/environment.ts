@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'http://localhost:8080',
+  url: 'https://tronxi.ddns.net/wordle/typer-nginx/',
   baseRef: '/',
 };
 
