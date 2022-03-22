@@ -1,6 +1,7 @@
 import {Component, OnInit, PipeTransform} from '@angular/core';
 import {Observable} from "rxjs";
 import {FormControl} from "@angular/forms";
+import {RankingService} from "../services/ranking.service";
 
 export interface UserTable {
   name: string;
@@ -15,20 +16,18 @@ export interface UserTable {
 
 export class RankingComponent implements OnInit {
 
-  ELEMENT_DATA: UserTable[] = [
-    {name: 'Alia', points: 10000},
-    {name: 'Troxi', points: 5000},
-    {name: 'Migue', points: 4999},
-    {name: 'ElMaquinas', points: 20},
-    {name: 'EscritorProf', points: 10},
-    {name: 'alguien', points: 2},
-    {name: 'yo', points: 2},
-    {name: 'tu', points: 2},
-    {name: 'algunaPersona', points: 2},
-    {name: 'Persona', points: 2},
-  ];
+  constructor(private rankingService: RankingService) {
+  }
+
+  ELEMENT_DATA: UserTable[] = [];
 
   ngOnInit(): void {
+    this.rankingService.ranking()
+      .subscribe(
+        {
+          next: value => {value.forEach((v: any) => {this.ELEMENT_DATA.push({name: v.alias, points: v.points})})}
+        }
+      )
   }
 
 }
