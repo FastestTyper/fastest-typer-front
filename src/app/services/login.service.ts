@@ -18,6 +18,6 @@ export class LoginService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json')
       .set('Authorization', 'Basic ' + window.btoa(user + ':' + pass));
 
-    return this.httpClient.post(environment.url + '/login', {}, {headers});
+    return this.httpClient.post(environment.url + '/typer/login', {}, {headers});
   }
 }

@@ -1,1 +1,9 @@
-<p>practice works!</p>
+<div class="lessons">
+  <div *ngFor="let lesson of lessons" class="card">
+    <div [ngClass]="lesson.completed ? 'completed' : 'incomplete'" class="card-body">
+      <h5 class="card-title">{{lesson.lesson.title}}</h5>
+      <p class="card-text">{{lesson.lesson.text.substring(0, 100) + "..."}}</p>
+      <button class="btn btn-primary" (click)="onPlay(lesson.lesson.id)">Jugar</button>
+    </div>
+  </div>
+</div>

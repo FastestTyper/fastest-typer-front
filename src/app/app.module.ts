@@ -8,11 +8,15 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {AppRoutingModule} from "./app-routing-module";
 import {FormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { RankingComponent } from './ranking/ranking.component';
 import { NavBComponent } from './nav-b/nav-b.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { PracticeComponent } from './practice/practice.component';
+import {TokenInterceptor} from "./interceptors/token.interceptor";
+import {APP_BASE_HREF} from "@angular/common";
+import {environment} from "../environments/environment";
+import { LessonComponent } from './lesson/lesson.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,8 @@ import { PracticeComponent } from './practice/practice.component';
     RankingComponent,
     NavBComponent,
     MainPageComponent,
-    PracticeComponent
+    PracticeComponent,
+    LessonComponent
   ],
   imports: [
     AppRoutingModule,
@@ -32,7 +37,14 @@ import { PracticeComponent } from './practice/practice.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }, {
+    provide: APP_BASE_HREF,
+    useValue: environment.baseRef
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

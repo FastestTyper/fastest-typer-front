@@ -11,7 +11,7 @@ export class NavBComponent implements OnInit {
 
   exist: boolean = false;
 
-  constructor(private tokenService : TokenService, private router : Router) {
+  constructor(public tokenService : TokenService, private router : Router) {
   }
 
   ngOnInit(): void {
@@ -24,4 +24,11 @@ export class NavBComponent implements OnInit {
     this.router.navigateByUrl('/home');
   }
 
+  onNavbar() {
+    if(this.tokenService.exist()) {
+      this.router.navigateByUrl('main-page');
+    }else {
+      this.router.navigateByUrl('/home');
+    }
+  }
 }

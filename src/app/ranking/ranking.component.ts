@@ -1,6 +1,4 @@
-import {Component, OnInit, PipeTransform} from '@angular/core';
-import {Observable} from "rxjs";
-import {FormControl} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
 import {RankingService} from "../services/ranking.service";
 
 export interface UserTable {

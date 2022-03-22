@@ -1,0 +1,18 @@
+.lessons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 200px;
+  margin: 20px;
+}
+
+.completed {
+  background-color: #B2FF33;
+}
+
+.incomplete {
+  background-color: #D7D8D6;
+}

@@ -5,10 +5,11 @@
 .navbar-brand {
   color: black;
   margin-left: 30px;
+  cursor: pointer;
 }
 
 .link:hover{
-  color: gray;
+  color: white;
   cursor: pointer;
 }
 

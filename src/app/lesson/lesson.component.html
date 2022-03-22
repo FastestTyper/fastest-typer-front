@@ -1,0 +1,23 @@
+<div class="lesson">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{lesson.title}}</h5>
+      {{totalTime}}
+      <div>
+        <div class="one" [innerHtml]="sanitizer.bypassSecurityTrustHtml(htmlToAdd)"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #modal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Completado!</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="onClose()"></button>
+  </div>
+  <div class="modal-body">
+    <p>{{lesson.title}} completada en {{totalTime}}!</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onClose()">Salir</button>
+  </div>
+</ng-template>
