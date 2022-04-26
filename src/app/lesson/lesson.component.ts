@@ -1,16 +1,17 @@
-import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {LessonService} from "../services/lesson.service";
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {TokenService} from "../services/token.service";
+import {Howl} from "howler";
 
 @Component({
   selector: 'app-lesson',
   templateUrl: './lesson.component.html',
   styleUrls: ['./lesson.component.css']
 })
-export class LessonComponent implements OnInit {
+export class LessonComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private router : Router,
@@ -22,8 +23,9 @@ export class LessonComponent implements OnInit {
     config.backdrop = 'static';
     config.keyboard = false;
   }
+
   lessonId : string  = "1";
-  lesson = {title: '', text: ''};
+  lesson = {title: '', text: '', audioUrl: ''};
   input : string = "";
   lastChar : string = "";
   processedText : string = "";
@@ -37,6 +39,7 @@ export class LessonComponent implements OnInit {
   timer: any;
   totalTime = "00:00:00";
   @ViewChild("modal") modal: ElementRef = {} as ElementRef;
+  sound: Howl = new Howl({src: 'default'});
 
   quoted = new Map<string, string>([
     ["a", "á"],
@@ -66,10 +69,15 @@ export class LessonComponent implements OnInit {
     this.lessonService.lessonById(this.lessonId).subscribe({
       next: value => {
         this.lesson = value;
+        this.sound = new Howl({src: [this.lesson.audioUrl], html5: true});
         this.preparse = this.preparseText(this.lesson.text);
         this.processText();
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.sound.stop();
   }
 
   preparseText(text: string): string {
@@ -86,6 +94,7 @@ export class LessonComponent implements OnInit {
   handleDeleteKeyboardEvent(event: KeyboardEvent) {
     if(this.win) return;
     if(!this.started) {
+      this.startAudio();
       this.started = true;
       this.tick();
       this.timer = setInterval(() => this.tick(), 1000);
@@ -160,5 +169,9 @@ export class LessonComponent implements OnInit {
     let s = num+"";
     while (s.length < size) s = "0" + s;
     return s;
+  }
+
+  startAudio() {
+    this.sound.play()
   }
 }
