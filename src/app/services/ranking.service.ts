@@ -13,4 +13,8 @@ export class RankingService {
   ranking(): Observable<any> {
     return this.httpClient.get(environment.url + "/typer/ranking");
   }
+
+  increase(userId: string): Observable<any> {
+    return this.httpClient.put(environment.url + "/typer/ranking/" + userId + "/increase", {});
+  }
 }

@@ -7,6 +7,7 @@ import {Client} from "@stomp/stompjs";
 import * as SockJS from "sockjs-client";
 import {environment} from "../../environments/environment";
 import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
+import {RankingService} from "../services/ranking.service";
 
 @Component({
   selector: 'app-online-game',
@@ -60,6 +61,7 @@ export class OnlineGameComponent implements OnInit {
               private router : Router,
               private tokenService: TokenService,
               private onlineService: OnlineAvaiablesService,
+              private rankingService: RankingService,
               public sanitizer: DomSanitizer,
               config: NgbModalConfig,
               private modalService: NgbModal) {
@@ -160,6 +162,7 @@ export class OnlineGameComponent implements OnInit {
     }
     if(allCorrect) {
       this.onlineService.sendText(this.userId, this.input).subscribe();
+      this.rankingService.increase(this.userId).subscribe();
       this.win = true;
       clearInterval(this.timer);
       this.onlineService.sendWin(this.userId, this.gameId).subscribe(
