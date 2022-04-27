@@ -18,6 +18,9 @@ import {APP_BASE_HREF} from "@angular/common";
 import {environment} from "../environments/environment";
 import { LessonComponent } from './lesson/lesson.component';
 import { LessonVideoComponent } from './lesson-video/lesson-video.component';
+import { OnlineAvailablesComponent } from './online-availables/online-availables.component';
+import { WaitingOnlineComponent } from './waiting-online/waiting-online.component';
+import { OnlineGameComponent } from './online-game/online-game.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { LessonVideoComponent } from './lesson-video/lesson-video.component';
     MainPageComponent,
     PracticeComponent,
     LessonComponent,
-    LessonVideoComponent
+    LessonVideoComponent,
+    OnlineAvailablesComponent,
+    WaitingOnlineComponent,
+    OnlineGameComponent
   ],
   imports: [
     AppRoutingModule,

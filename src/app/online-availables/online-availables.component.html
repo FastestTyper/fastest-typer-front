@@ -1,0 +1,33 @@
+<div class="table-content">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">Email</th>
+      <th scope="col">Alias</th>
+      <th scope="col">Points</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor=" let user of Users; let i = index">
+      <td>{{user.email}}</td>
+      <td>{{user.alias}}</td>
+      <td>{{user.points}}</td>
+      <td><button class="btn btn-primary" (click)="onInvite(user.id)">Invitar</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #modal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Invitacion!</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="onClose()"></button>
+  </div>
+  <div class="modal-body">
+    <p>Tienes una invitación para jugar del usuario {{invitingUser.alias}} con puntuacion {{invitingUser.points}}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onClose()">Rechazar</button>
+    <button type="button" class="btn btn-primary" (click)="onAccept()">Aceptar</button>
+  </div>
+</ng-template>

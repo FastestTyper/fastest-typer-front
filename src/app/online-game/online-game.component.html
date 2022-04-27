@@ -1,0 +1,16 @@
+<div class="game">
+  <div class="card">
+    <div class="card-body">
+      {{totalTime}}
+      <div>
+        <div class="one" [innerHtml]="sanitizer.bypassSecurityTrustHtml(htmlToAdd)"></div>
+      </div>
+      <div>
+        <p>Texto del rival:</p>
+        <p>
+          {{otherText}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -17,4 +17,7 @@ export class MainPageComponent implements OnInit {
     this.router.navigateByUrl('/practice').then();
   }
 
+  onPvP() {
+    this.router.navigateByUrl('/online/available').then();
+  }
 }

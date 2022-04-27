@@ -1,0 +1,11 @@
+.table-hover {
+  background-color: #CFD7EF;
+  color: black;
+}
+
+.table-hover thead{
+  background-color: #6b8ce6;
+}
+.table-content {
+  margin: 30px;
+}
