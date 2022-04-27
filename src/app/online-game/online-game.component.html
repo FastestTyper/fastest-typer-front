@@ -14,3 +14,29 @@
     </div>
   </div>
 </div>
+
+<ng-template #modalWin let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title-win">Has ganado!!</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="onCloseWin()"></button>
+  </div>
+  <div class="modal-body">
+    <p>Has ganado en {{totalTime}}!</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onCloseWin()">Salir</button>
+  </div>
+</ng-template>
+
+<ng-template #modalLose let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title-lose">Has perdido!</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="onCloseLose()"></button>
+  </div>
+  <div class="modal-body">
+    <p>Has perdido... Suerte la proxima vez!</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onCloseLose()">Salir</button>
+  </div>
+</ng-template>

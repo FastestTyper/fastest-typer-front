@@ -37,4 +37,8 @@ export class OnlineAvaiablesService {
   sendText(userId: string, text: string): Observable<any> {
     return this.httpClient.post(environment.url + "/typer/online/text/" + userId, {text});
   }
+
+  sendWin(userId: string, gameId: string): Observable<any> {
+    return this.httpClient.post(environment.url + "/typer/online/ " + userId + "/win/" + gameId, {});
+  }
 }

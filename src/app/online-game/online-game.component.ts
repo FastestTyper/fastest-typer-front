@@ -1,11 +1,12 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 import {TokenService} from "../services/token.service";
 import {OnlineAvaiablesService} from "../services/online-avaiables.service";
 import {DomSanitizer} from "@angular/platform-browser";
 import {Client} from "@stomp/stompjs";
 import * as SockJS from "sockjs-client";
 import {environment} from "../../environments/environment";
+import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-online-game',
@@ -52,11 +53,19 @@ export class OnlineGameComponent implements OnInit {
   started: boolean = false;
   otherText: string = "";
   private client!: Client;
+  @ViewChild("modalWin") modalWin: ElementRef = {} as ElementRef;
+  @ViewChild("modalLose") modalLose: ElementRef = {} as ElementRef;
 
   constructor(private route: ActivatedRoute,
+              private router : Router,
               private tokenService: TokenService,
               private onlineService: OnlineAvaiablesService,
-              public sanitizer: DomSanitizer) { }
+              public sanitizer: DomSanitizer,
+              config: NgbModalConfig,
+              private modalService: NgbModal) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
   ngOnInit(): void {
     this.userId = this.tokenService.retrieveUserId();
@@ -77,6 +86,9 @@ export class OnlineGameComponent implements OnInit {
         this.client.onConnect = (frame) => {
           this.client.subscribe('/topic/game' + this.otherUserId,  (event) => {
             this.otherText = event.body;
+          });
+          this.client.subscribe('/topic/win' + this.gameId + this.otherUserId,  (event) => {
+            this.modalService.open(this.modalLose);
           });
         };
         this.client.activate();
@@ -123,7 +135,6 @@ export class OnlineGameComponent implements OnInit {
     }
     this.input += char;
     if(char === " ") {
-      console.log("Input " + this.input);
       this.onlineService.sendText(this.userId, this.input).subscribe();
     }
     this.processText();
@@ -151,6 +162,9 @@ export class OnlineGameComponent implements OnInit {
       this.onlineService.sendText(this.userId, this.input).subscribe();
       this.win = true;
       clearInterval(this.timer);
+      this.onlineService.sendWin(this.userId, this.gameId).subscribe(
+        value => this.modalService.open(this.modalWin)
+      );
     }
     this.htmlToAdd = html;
   }
@@ -173,4 +187,13 @@ export class OnlineGameComponent implements OnInit {
     return s;
   }
 
+  onCloseWin() {
+    this.modalService.dismissAll();
+    this.router.navigateByUrl("/online/available").then();
+  }
+
+  onCloseLose() {
+    this.modalService.dismissAll();
+    this.router.navigateByUrl("/online/available").then();
+  }
 }
